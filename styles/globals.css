@@ -1,0 +1,1009 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&f[]=clash-display@600,700&display=swap');
+
+:root {
+  /* Modern Color System */
+  --color-dark: #0A0A0C;
+  --color-dark-800: #13131A;
+  --color-dark-700: #1C1C26;
+  --color-dark-600: #2D2D3D;
+  
+  --color-primary: #7000FF;
+  --color-primary-light: #9945FF;
+  --color-primary-dark: #5200BD;
+  
+  --color-accent: #00E4FF;
+  --color-accent-light: #70FFFF;
+  --color-accent-dark: #00B4CC;
+  
+  --color-success: #00FFA3;
+  --color-warning: #FFB800;
+  --color-error: #FF3E3E;
+  
+  /* Neon Colors */
+  --neon-blue: #00F0FF;
+  --neon-purple: #BC00FF;
+  --neon-green: #00FF94;
+  
+  /* Text Colors */
+  --color-text: #FFFFFF;
+  --color-text-secondary: rgba(255, 255, 255, 0.7);
+  --color-text-muted: rgba(255, 255, 255, 0.5);
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--color-accent) 0%, var(--neon-green) 100%);
+  --gradient-dark: linear-gradient(135deg, var(--color-dark-800) 0%, var(--color-dark-600) 100%);
+  
+  /* Shadows */
+  --shadow-sm: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0px 4px 8px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0px 8px 16px rgba(0, 0, 0, 0.14);
+  --shadow-xl: 0px 12px 24px rgba(0, 0, 0, 0.16);
+  
+  /* Neon Shadows */
+  --neon-shadow-blue: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
+  --neon-shadow-purple: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple);
+  --neon-shadow-green: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green);
+}
+
+/* Base Styles */
+body {
+  background-color: var(--color-dark);
+  color: var(--color-text);
+  font-family: 'Satoshi', sans-serif;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Clash Display', sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Modern Components */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--gradient-primary);
+  color: white;
+  padding: 0.875rem 1.75rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--neon-shadow-purple);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  padding: 0.875rem 1.75rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Navigation */
+.nav-link {
+  color: var(--color-text-secondary);
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  color: var(--color-text);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-accent);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Grid Layouts */
+.auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Marketplace Cards */
+.robot-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: var(--color-dark-800);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.robot-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-primary);
+  box-shadow: var(--neon-shadow-purple);
+}
+
+.robot-image {
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+/* Stats */
+.stat-card {
+  background: var(--color-dark-800);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+/* Charts and Data Visualization */
+.chart-container {
+  background: var(--color-dark-800);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Modern Sidebar */
+.sidebar {
+  width: 280px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: var(--color-dark-800);
+  border-right: 1px solid rgba(255, 255, 255, 0.03);
+  padding: 2rem;
+  z-index: 50;
+}
+
+.sidebar-brand {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.nav-item {
+  position: relative;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-accent);
+  transition: width 0.3s ease;
+}
+
+.nav-item:hover::after {
+  width: 100%;
+}
+
+.nav-link {
+  position: relative;
+  text-decoration: none;
+  color: var(--color-text-secondary);
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-text);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Main Content */
+.main-content {
+  margin-left: 280px;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+/* Modern Card Design */
+.card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.card:hover::after {
+  opacity: 0.03;
+}
+
+/* NFT Grid */
+.nft-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.nft-card {
+  background: var(--color-dark-800);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nft-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: var(--color-primary);
+  box-shadow: 0 20px 40px rgba(112, 0, 255, 0.15);
+}
+
+.nft-image-wrapper {
+  position: relative;
+  padding-top: 100%;
+  overflow: hidden;
+}
+
+.nft-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nft-card:hover .nft-image {
+  transform: scale(1.1);
+}
+
+.nft-content {
+  padding: 1.5rem;
+  background: linear-gradient(180deg, 
+    rgba(19, 19, 26, 0) 0%,
+    rgba(19, 19, 26, 0.8) 20%,
+    rgba(19, 19, 26, 1) 100%
+  );
+}
+
+/* Modern Buttons */
+button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+button:hover::after {
+  opacity: 1;
+}
+
+.btn {
+  padding: 0.875rem 1.75rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  color: white;
+  padding: 0.875rem 1.75rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(112, 0, 255, 0.25);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(112, 0, 255, 0.35);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 0.875rem 1.75rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Search and Filter */
+.search-bar {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  padding-left: 3rem;
+  background: var(--color-dark-700);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 1rem;
+  color: var(--color-text);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  background: var(--color-dark-600);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(112, 0, 255, 0.1);
+  outline: none;
+}
+
+/* Stats Card */
+.stat-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 1.5rem;
+}
+
+.stat-card:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.stat-value {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Progress Bars */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--color-dark-600);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--gradient-primary);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Tags and Badges */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: var(--color-dark-700);
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  transition: all 0.3s ease;
+}
+
+.tag:hover {
+  background: var(--color-dark-600);
+  color: var(--color-text);
+}
+
+/* Utility Classes */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+}
+
+.text-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-accent) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hover-scale {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Web3 Wallet Styles */
+.connect-wallet-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 320px;
+}
+
+.btn-wallet {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background: var(--color-dark-700);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  color: var(--color-text);
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-wallet:hover:not(:disabled) {
+  background: var(--color-dark-600);
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.btn-wallet:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-wallet.metaMask {
+  background: linear-gradient(135deg, #FF8C27 0%, #FF6B00 100%);
+  color: white;
+}
+
+.btn-wallet.walletConnect {
+  background: linear-gradient(135deg, #3B99FC 0%, #2B7FE8 100%);
+  color: white;
+}
+
+.btn-wallet.coinbaseWallet {
+  background: linear-gradient(135deg, #2C5FF6 0%, #2952E8 100%);
+  color: white;
+}
+
+.wallet-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 1rem;
+  background: var(--color-dark-700);
+}
+
+.wallet-address {
+  font-family: 'Clash Display', sans-serif;
+  font-weight: 600;
+}
+
+.wallet-balance {
+  padding: 0.25rem 0.75rem;
+  background: var(--color-dark-600);
+  border-radius: 1rem;
+  font-size: 0.875rem;
+}
+
+.network-badge {
+  padding: 0.25rem 0.75rem;
+  background: var(--gradient-primary);
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  color: white;
+}
+
+.connect-error {
+  color: var(--color-error);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+/* NFT Marketplace Enhancements */
+.nft-filters {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.filter-chip {
+  padding: 0.5rem 1.25rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background: var(--color-dark-700);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.filter-chip:hover,
+.filter-chip.active {
+  background: var(--gradient-primary);
+  color: white;
+}
+
+.nft-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  padding: 1.5rem;
+  background: var(--color-dark-800);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* Loading States */
+.loading-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-dark-700) 0%,
+    var(--color-dark-600) 50%,
+    var(--color-dark-700) 100%
+  );
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 0.5rem;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Toast Notifications */
+.toast-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 100;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background: var(--color-dark-800);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-lg);
+  margin-top: 0.75rem;
+  transform: translateX(100%);
+  animation: slideIn 0.3s forwards;
+}
+
+.toast-success {
+  border-left: 4px solid var(--color-success);
+}
+
+.toast-error {
+  border-left: 4px solid var(--color-error);
+}
+
+@keyframes slideIn {
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Transaction Progress */
+.transaction-progress {
+  position: relative;
+  padding: 1rem;
+  background: var(--color-dark-800);
+  border-radius: 1rem;
+  margin-top: 1rem;
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.step-indicator {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--color-dark-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  position: relative;
+}
+
+.step-indicator.active {
+  background: var(--gradient-primary);
+  color: white;
+}
+
+.step-indicator.completed {
+  background: var(--color-success);
+  color: white;
+}
+
+.step-label {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+/* Chain Selector */
+.chain-selector {
+  position: relative;
+}
+
+.chain-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--color-dark-700);
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.chain-list {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  background: var(--color-dark-800);
+  border-radius: 1rem;
+  padding: 0.5rem;
+  min-width: 200px;
+  box-shadow: var(--shadow-lg);
+  z-index: 50;
+}
+
+.chain-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chain-item:hover {
+  background: var(--color-dark-600);
+}
+
+.chain-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* Gas Price Indicator */
+.gas-price {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  background: var(--color-dark-700);
+  border-radius: 1rem;
+  font-size: 0.875rem;
+}
+
+.gas-price.low {
+  color: var(--color-success);
+}
+
+.gas-price.medium {
+  color: var(--color-warning);
+}
+
+.gas-price.high {
+  color: var(--color-error);
+}
+
+/* Modern Background */
+.bg-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--color-dark) 0%,
+    var(--color-dark-800) 100%
+  );
+  background-attachment: fixed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-link {
+    padding: 1rem;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.75rem 1.5rem;
+  }
+  
+  .stat-card {
+    padding: 1.5rem;
+  }
+  
+  .nft-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Navigation Styles */
+.nav-link {
+  position: relative;
+  text-decoration: none;
+  color: var(--color-text-secondary);
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-text);
+}
+
+/* Remove default link styling */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Modern backdrop blur */
+.backdrop-blur-md {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Web3Connect Styles */
+.wallet-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.wallet-address {
+  font-family: 'Satoshi', monospace;
+  font-size: 0.9rem;
+}
+
+.wallet-balance {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.network-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  background: var(--color-primary);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.btn-wallet {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  background: var(--color-dark-700);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-text);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-wallet:not(:disabled):hover {
+  background: var(--color-dark-600);
+  border-color: var(--color-primary);
+}
+
+.btn-wallet:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-wallet.loading {
+  background: var(--color-dark-800);
+  color: var(--color-text-secondary);
+}
+
+.connect-wallet-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 200px;
+}
+
+.error-message {
+  color: var(--color-error);
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
